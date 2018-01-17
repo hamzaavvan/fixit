@@ -71,6 +71,8 @@ textarea {
 .issue-tag-link {
   text-decoration: none !important;
   color: initial;
+  display: block;
+  margin-top: 15px;
 }
 
 .issue-tag-link:hover {
@@ -105,7 +107,7 @@ textarea {
 }
 
 .issue-title {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 [color-white] {
@@ -114,6 +116,10 @@ textarea {
 
 .bg-primary {
   background-color: #3097d1 !important;
+}
+
+.issue-tag-link:not(:first-child) {
+  border-top: 1px solid #dbdee0;
 }
 
 .goto-edit {
