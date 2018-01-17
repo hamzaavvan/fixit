@@ -40,7 +40,8 @@ class IssueController extends Controller
     	$issue = new Issue([
             'projectname' => $request->projectname,
     		'title' => ucwords($request->title),
-    		'description' => $request->description,
+            'description' => $request->description,
+    		'summary' => $request->summary,
     		'fix' => $request->fix,
     		'fixed' => $request->fixed ? 1 : 0,
     		'slug' => $slug,
@@ -55,8 +56,9 @@ class IssueController extends Controller
     {
         $issue = Issue::whereSlug($slug)->firstOrFail();
         $issue->projectname = $request->projectname;
-        $issue->title = $request->title;
+        $issue->title = ucwords($request->title);
         $issue->description = $request->description;
+        $issue->summary = ucfirst($request->summary);
         $issue->fix = $request->fix;
         $issue->fixed = $request->fixed == "on" ? 1 : 0;
 

@@ -18,6 +18,7 @@ class CreateIssuesTable extends Migration
             $table->string('projectname', 250);
             $table->string('title', 500);
             $table->longText('description')->nullable();
+            $table->longText('summary')->nullable();
             $table->string('slug')->nullable();
             $table->longText('fix')->nullable();
             $table->tinyInteger('fixed')->default(1);

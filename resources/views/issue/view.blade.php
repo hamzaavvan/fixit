@@ -20,6 +20,12 @@
                 </div>
 
                 <div class="panel-body">
+                    @if ($issue->fixed)
+                        <div class="summary-wrapper alert alert-success">
+                            <p><strong>Summary:</strong> {{ $issue->summary }}</p>
+                        </div>
+                    @endif
+
                     <h3 class="issue-title">{{ $issue->title }}</h3>
                     <div class="issue-desc">{{ $issue->description }}</div>
                     <div class="fix">
@@ -43,6 +49,8 @@
                         <a href="{{ action("IssueController@edit", $issue->slug) }}" class="goto-edit">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
+                        
+                        <span class="created_at badge badge-primary pull-right">{{ $issue->projectname }}</span>
                     </div>
 
                 </div>

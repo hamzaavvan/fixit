@@ -69,11 +69,25 @@
                             <label for="fix" class="col-md-1 control-label">Fix</label>
 
                             <div class="col-md-12">
-                                <textarea id="fix" type="fix" class="form-control" name="fix">{{ $issue->fix }}</textarea>
+                                <textarea id="fix" class="form-control" name="fix">{{ $issue->fix }}</textarea>
 
                                 @if ($errors->has('fix'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('fix') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('summary') ? ' has-error' : '' }}">
+                            <label for="summary" class="col-md-1 control-label">Summary</label>
+
+                            <div class="col-md-12">
+                                <textarea id="summary" class="form-control" name="summary">{{ $issue->summary }}</textarea>
+
+                                @if ($errors->has('summary'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('summary') }}</strong>
                                     </span>
                                 @endif
                             </div>

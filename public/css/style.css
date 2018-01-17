@@ -122,6 +122,10 @@ textarea {
   border-top: 1px solid #dbdee0;
 }
 
+.issue-tag-link:last-child {
+  margin-bottom: 15px;
+}
+
 .goto-edit {
   border-radius: 100%;
   padding: 4px 5.2px;

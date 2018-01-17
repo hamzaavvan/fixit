@@ -27,7 +27,7 @@
             @endif
             
             <div class="panel panel-default">
-                <div class="panel-heading">All Issues</div>
+                <div class="panel-heading">All Issues ({{ count($issues) }} Found)</div>
 
                 <div class="panel-body">
                     @if(count($issues))
@@ -44,6 +44,7 @@
                                         <span class="badge badge-warning">Not Fixed</span>
                                     @endif
 
+                                    <span class="created_at badge badge-primary pull-right">{{ $issue->projectname }}</span>
                                 </div>
                             </a>
                         @endforeach
