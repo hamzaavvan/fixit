@@ -115,7 +115,7 @@ textarea {
 
 .goto-edit {
     border-radius: 100%;
-    padding: 4px 5px;
+    padding: 4px 5.2px;
     /* color: #fff; */
     font-size: 10px;
     border: 1px solid;
@@ -123,4 +123,26 @@ textarea {
 
 .rad-100 {
     border-radius: 100%;
+}
+
+.searchbox-wrapper {
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+    #srch-term {
+        border-right: none !important;
+        box-shadow: none;
+        border-radius: 20px 0 0 20px;
+
+        &:focus {
+            outline: none !important;
+            border-color: #ccd0d2 !important;
+        }
+    }
+
+    #search {
+        border-left: none !important;
+        outline: none !important;
+        border-radius: 0 20px 20px 0;
+    }
 }

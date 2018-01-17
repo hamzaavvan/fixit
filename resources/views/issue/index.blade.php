@@ -4,13 +4,28 @@
 @section('content')
 <div class="container">
     <div class="row">
+            
+        <div class="searchbox-wrapper col-md-12">
+            <form role="search">
+                <div class="input-group add-on">
+                    <input class="form-control" placeholder="Search for issues . . ." name="srch-term" id="srch-term" type="text">
+                      
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" id="search" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="col-md-12">
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
                 </div>
             @endif
-
+            
             <div class="panel panel-default">
                 <div class="panel-heading">All Issues</div>
 
