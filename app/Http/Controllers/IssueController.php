@@ -8,11 +8,29 @@ use Fixit\Issue;
 
 class IssueController extends Controller
 {
-    public function index()
+    public function index($view = '', Request $request)
     {
-        $issues = Issue::all();
+        if (!empty($request->search)) {
+            $search = $request->search;
+            $issues = $this->search($search, $view);
 
-    	return view('issue.index', compact('issues'));
+            return view('issue.index', compact('issues'));
+        } else {
+            switch ($view) {
+                case 'fixed':
+                    $issues = Issue::where('fixed', 1)->get();
+                    break;
+                
+                case 'not-fixed':
+                    $issues = Issue::where('fixed', 0)->get();
+                    break;
+
+                default:
+                    $issues = Issue::all();
+            }
+
+        	return view('issue.index', compact('issues'));
+        }
     }
 
     public function create()
@@ -49,7 +67,8 @@ class IssueController extends Controller
 
     	$issue->save();
 
-    	return redirect('/open-issue')->with('status', 'Your issue has been registered !');
+        $link = "<a href=\"".action("IssueController@view", $slug)."\">$slug</a>";
+    	return redirect('/open-issue')->with('status', "Your issue $link has been registered !");
     }
 
     public function update($slug, IssueFormRequest $request)
@@ -65,5 +84,39 @@ class IssueController extends Controller
         $issue->save();
 
         return redirect(action("IssueController@view", $issue->slug))->with('status', 'Your issue has been updated !');
+    }
+
+    protected function search($keyword, $view = '')
+    {
+        switch ($view) {
+            case 'fixed':
+                $issues = Issue::where("title", "like", "%$keyword%")->where('fixed', 1)->get();
+                break;
+            
+            case 'not-fixed':
+                $issues = Issue::where("title", "like", "%$keyword%")->where('fixed', 0)->get();
+                break;
+
+            default:
+            $issues = Issue::orwhere([
+                ["title", "like", "%$keyword%"],
+                ["description", "like", "%$keyword%"],
+            ])->get();
+        }
+
+        return $issues;
+    }
+
+    public function delete($slug)
+    {
+        $issue = Issue::whereSlug($slug);
+
+        if ($issue) {
+            $issue->delete();
+
+            return redirect("/issues")->with('status', "Issue <b>$slug</b> has been deleted");
+        } else {
+            return redirect("/issues")->with('status', 'No issue exists');
+        }
     }
 }

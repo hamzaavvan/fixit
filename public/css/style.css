@@ -68,6 +68,10 @@ textarea {
   text-transform: capitalize;
 }
 
+.issue-form label {
+  text-align: left !important;
+}
+
 .issue-tag-link {
   text-decoration: none !important;
   color: initial;
@@ -161,3 +165,30 @@ textarea {
   border-radius: 0 20px 20px 0;
 }
 
+.issuebtn {
+  margin-bottom: 10px;
+}
+
+.delete-issue {
+  color: red !important;
+  border-radius: 100%;
+  padding: 4px 5.2px;
+  font-size: 10px;
+  border: 1px solid;
+}
+
+
+::selection {
+  background: #e6ecef; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #e6ecef; /* Gecko Browsers */
+}
+
+.highlight {
+    background-color: #dbdbdbb0;
+    padding: 3px 6px;
+    margin: 0 5px;
+    border-radius: 3px;
+    cursor: default;
+}

@@ -22,12 +22,24 @@
                 <div class="panel-body">
                     @if ($issue->fixed)
                         <div class="summary-wrapper alert alert-success">
-                            <p><strong>Summary:</strong> {{ $issue->summary }}</p>
+
+                            <?php 
+                                $summary = Fixit\Helpers\Markdown::link($issue->summary);
+                                $summary = Fixit\Helpers\Markdown::highlight($summary);
+                            ?>
+
+                            <p><strong>Summary:</strong> {!! Fixit\Helpers\Markdown::bold($summary) !!}</p>
                         </div>
                     @endif
 
                     <h3 class="issue-title">{{ $issue->title }}</h3>
-                    <div class="issue-desc">{{ $issue->description }}</div>
+
+                    <?php 
+                        $description = Fixit\Helpers\Markdown::link($issue->description);
+                        $description = Fixit\Helpers\Markdown::bold($description);
+                    ?>
+
+                    <div class="issue-desc">{!! nl2br($description) !!}</div>
                     <div class="fix">
                         <h4>Fix: </h4>
 
@@ -48,6 +60,10 @@
 
                         <a href="{{ action("IssueController@edit", $issue->slug) }}" class="goto-edit">
                             <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+
+                        <a href="{{ action("IssueController@delete", $issue->slug) }}" class="delete-issue">
+                            <span class="glyphicon glyphicon-trash"></span>
                         </a>
                         
                         <span class="created_at badge badge-primary pull-right">{{ $issue->projectname }}</span>

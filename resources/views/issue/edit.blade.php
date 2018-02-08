@@ -69,7 +69,7 @@
                             <label for="fix" class="col-md-1 control-label">Fix</label>
 
                             <div class="col-md-12">
-                                <textarea id="fix" class="form-control" name="fix">{{ $issue->fix }}</textarea>
+                                <textarea id="fix" rows="6" class="form-control" name="fix">{{ $issue->fix }}</textarea>
 
                                 @if ($errors->has('fix'))
                                     <span class="help-block">

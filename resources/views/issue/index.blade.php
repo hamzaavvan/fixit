@@ -6,9 +6,9 @@
     <div class="row">
             
         <div class="searchbox-wrapper col-md-12">
-            <form role="search">
+            <form method="GET" role="search">
                 <div class="input-group add-on">
-                    <input class="form-control" placeholder="Search for issues . . ." name="srch-term" id="srch-term" type="text">
+                    <input class="form-control" placeholder="Search for issues . . ." name="search" id="srch-term" type="text" value="{{ request("search") }}" autocomplete="off">
                       
                     <div class="input-group-btn">
                         <button class="btn btn-default" id="search" type="submit">
@@ -19,15 +19,35 @@
             </form>
         </div>
 
+
         <div class="col-md-12">
             @if (session('status'))
                 <div class="alert alert-success">
-                    {{ session('status') }}
+                    {!! session('status') !!}
                 </div>
             @endif
+
+            <div class="issuebtn">
+                <a href="{{ action('IssueController@index') }}" class="badge badgeadge-primary">All</a>
+                <a href="{{ action('IssueController@index', 'fixed') }}" class="badge badge-success">Fixed</a>
+                <a href="{{ action('IssueController@index', 'not-fixed') }}" class="badge badge-warning">Not Fixed</a>
+            </div>
             
             <div class="panel panel-default">
-                <div class="panel-heading">All Issues ({{ count($issues) }} Found)</div>
+                @if (request('search'))
+                    <div class="panel-heading">
+                        <a class="back" href="{{ url('/issues') }}">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                             {{ !empty(request('slug')) ? request('slug') : "All Issues" }} 
+                             ({{ count($issues) }} Found)
+                        </a>
+                    </div>
+                @else
+                    <div class="panel-heading">
+                        {{ !empty(request('slug')) ? ucwords(str_replace('-', ' ', request('slug'))) : "All Issues" }} 
+                        ({{ count($issues) }} Found)
+                    </div>
+                @endif
 
                 <div class="panel-body">
                     @if(count($issues))

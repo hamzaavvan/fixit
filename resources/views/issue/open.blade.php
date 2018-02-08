@@ -5,9 +5,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            @if (session('status'))
+            @if (!empty(session('status')))
                 <div class="alert alert-success">
-                    {{ session('status') }}
+                    {!! session('status') !!}
                 </div>
             @endif
 
@@ -64,7 +64,7 @@
                             <label for="fix" class="col-md-1 control-label">Fix</label>
 
                             <div class="col-md-12">
-                                <textarea id="fix" class="form-control" name="fix"></textarea>
+                                <textarea id="fix" rows="6" class="form-control" name="fix"></textarea>
 
                                 @if ($errors->has('fix'))
                                     <span class="help-block">
