@@ -59,7 +59,7 @@ class IssueController extends Controller
             'projectname' => $request->projectname,
     		'title' => ucwords($request->title),
             'description' => $request->description,
-    		'summary' => $request->summary,
+    		'summary' => ucfirst($request->summary),
     		'fix' => $request->fix,
     		'fixed' => $request->fixed ? 1 : 0,
     		'slug' => $slug,

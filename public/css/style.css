@@ -192,3 +192,7 @@ textarea {
     border-radius: 3px;
     cursor: default;
 }
+
+#app {
+    background-color: #f5f8fa;
+}

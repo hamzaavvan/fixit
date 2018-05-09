@@ -2,6 +2,9 @@
 @section('title', "Fixit | $issue->title")
 
 @section('content')
+
+<?php use Fixit\Helpers\Markdown; ?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -24,19 +27,19 @@
                         <div class="summary-wrapper alert alert-success">
 
                             <?php 
-                                $summary = Fixit\Helpers\Markdown::link($issue->summary);
-                                $summary = Fixit\Helpers\Markdown::highlight($summary);
+                                $summary = Markdown::link($issue->summary);
+                                $summary = Markdown::highlight($summary);
                             ?>
 
-                            <p><strong>Summary:</strong> {!! Fixit\Helpers\Markdown::bold($summary) !!}</p>
+                            <p><strong>Summary:</strong> {!! Markdown::bold($summary) !!}</p>
                         </div>
                     @endif
 
                     <h3 class="issue-title">{{ $issue->title }}</h3>
 
                     <?php 
-                        $description = Fixit\Helpers\Markdown::link($issue->description);
-                        $description = Fixit\Helpers\Markdown::bold($description);
+                        $description = Markdown::link($issue->description);
+                        $description = Markdown::bold($description);
                     ?>
 
                     <div class="issue-desc">{!! nl2br($description) !!}</div>
