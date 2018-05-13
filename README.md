@@ -10,3 +10,4 @@ App which would surely help
 5) Edit bugs
 
 ### Now Supports `Markdown`
+![Fixit Markup Support](https://github.com/hamzaavvan/fixit/blob/master/screenshots/fixit%20markdown%20support%20showdown.gif?raw=true)
