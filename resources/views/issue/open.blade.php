@@ -89,11 +89,18 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="form-check col-md-5">
+                            <div class="form-check col-md-3">
                                 <input class="form-check-input" type="checkbox" id="fixed" name="fixed">
                                 
                                 <label class="form-check-label" for="fixed">
                                     Fixed <span class="label label-primary">Optional</span>
+                                </label>
+                            </div>
+                            <div class="form-check col-md-3">
+                                <input class="form-check-input" type="checkbox" id="fixed" name="fixed">
+                                
+                                <label class="form-check-label" for="fixed">
+                                    Public <span class="label label-primary">Optional</span>
                                 </label>
                             </div>
                         </div>

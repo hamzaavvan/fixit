@@ -56,7 +56,7 @@
                                 <h3 class="issue-title">{{ $issue->title }}</h3>
                                 <div class="issue-desc">{{ ucfirst($issue->description) }}</div>
                                 <div class="side-info">
-                                    <span class="created_at badge badge-secondary">{{ toDate($issue->created_at) }}</span>
+                                    <span class="created_at badge badge-secondary">{{ time_elapsed_string($issue->created_at) }}</span>
 
                                     @if ($issue->fixed)
                                         <span class="badge badge-success">Fixed</span>

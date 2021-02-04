@@ -14,23 +14,28 @@ class IssueController extends Controller
             $search = $request->search;
             $issues = $this->search($search, $view);
 
-            return view('issue.index', compact('issues'));
         } else {
             switch ($view) {
                 case 'fixed':
-                    $issues = Issue::where('fixed', 1)->get();
+                    $issues = Issue::where([
+                        ['fixed', '=', 1],
+                        ['user_id', '=', Auth::user()->id]
+                    ])->get();
                     break;
                 
                 case 'not-fixed':
-                    $issues = Issue::where('fixed', 0)->get();
+                    $issues = Issue::where([
+                        ['fixed', '=', 0],
+                        ['user_id', '=', Auth::user()->id]
+                    ])->get();
                     break;
 
                 default:
-                    $issues = Issue::all();
+                    $issues = Issue::where('user_id', Sentry::getUser()->id)->get();
             }
-
-        	return view('issue.index', compact('issues'));
         }
+
+        return view('issue.index', compact('issues'));
     }
 
     public function create()
