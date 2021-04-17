@@ -11,3 +11,18 @@ App which would surely help
 
 ### Now Supports `Markdown`
 ![Fixit Markup Support](https://github.com/hamzaavvan/fixit/blob/master/screenshots/fixit%20markdown%20support%20showdown.gif?raw=true)
+
+
+### Installation
+```bash
+$ cd fixit
+$ composer install
+```
+
+### Usage
+To run this app, execute the follow commands:
+
+```bash
+$ cd fixit
+$ php artisan server
+```

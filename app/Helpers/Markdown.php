@@ -32,4 +32,14 @@ class Markdown {
 
         return $markdown;
 	}
+
+	
+	public static function make($string)
+	{
+		$string = self::link($string);
+
+        return $string;
+	}
+
+	
 }

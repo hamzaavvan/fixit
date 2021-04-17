@@ -42,7 +42,7 @@
                         $description = Markdown::bold($description);
                     ?>
 
-                    <div class="issue-desc">{!! nl2br($description) !!}</div>
+                    <div class="issue-desc">{!! Markdown::make(nl2br($description)) !!}</div>
                     <div class="fix">
                         <h4>Fix: </h4>
 
