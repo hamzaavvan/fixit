@@ -23,8 +23,8 @@ class CreateIssuesTable extends Migration
             $table->longText('fix')->nullable();
             $table->tinyInteger('fixed')->default(1);
             $table->tinyInteger('visibility')->default(0);
-            $table->unsignedBigInteger('user_id')->default(1);
-            $table->unsignedBigInteger('assigned_to')->default(1);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('assigned_to');
             $table->timestamps();
         });
     }

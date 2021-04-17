@@ -29,12 +29,12 @@ Route::get('/issues/{slug?}', 'IssueController@index');
 
 Route::get('/issue/{slug?}/view', 'IssueController@view');
 
-Route::get('/issue/{slug?}/delete', 'IssueController@delete');
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/open-issue', 'IssueController@create');
+    Route::get('/issue/{slug?}/delete', 'IssueController@delete');
     Route::post('/open-issue', 'IssueController@store')->name('open-issue');
     Route::get('/issue/{slug?}/edit', 'IssueController@edit');
     Route::post('/issue/{slug?}/edit', 'IssueController@update');

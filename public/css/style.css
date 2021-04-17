@@ -196,3 +196,15 @@ textarea {
 #app {
     background-color: #f5f8fa;
 }
+
+.welcome {
+  background-color: #fff !important;
+	background-image: url("/img/bg.jpg");
+  margin: 0 auto;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 11.5em;
+}
+.welcome>div>div {
+  margin: 0 auto;
+}

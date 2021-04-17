@@ -55,19 +55,18 @@
                     <div class="side-info">
                         <span class="created_at badge badge-secondary">{{ time_elapsed_string($issue->created_at) }}</span>
 
-                        @if ($issue->fixed)
-                            <span class="badge badge-success">Fixed</span>
-                        @else
-                            <span class="badge badge-warning">Not Fixed</span>
+                        <span class="badge badge-{{ $issue->fixed ? 'success' : 'warning'}}">{{ $issue->fixed ? 'Fixed' : 'Not Fixed'}}</span>
+                        <span class="created_at badge badge-primary">{{ $issue->visibility ? "Public" : "Private" }}</span>
+
+                        @if ($issue->owner)
+                            <a href="{{ action('IssueController@edit', $issue->slug) }}" class="goto-edit">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+
+                            <a href="{{ action('IssueController@delete', $issue->slug) }}" class="delete-issue">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
                         @endif
-
-                        <a href="{{ action("IssueController@edit", $issue->slug) }}" class="goto-edit">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
-
-                        <a href="{{ action("IssueController@delete", $issue->slug) }}" class="delete-issue">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
                         
                         <span class="created_at badge badge-primary pull-right">{{ $issue->projectname }}</span>
                     </div>

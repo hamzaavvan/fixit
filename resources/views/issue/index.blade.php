@@ -64,6 +64,8 @@
                                         <span class="badge badge-warning">Not Fixed</span>
                                     @endif
 
+                                    <span class="created_at badge badge-primary">{{ $issue->visibility ? "Public" : "Private" }}</span>
+
                                     <span class="created_at badge badge-primary pull-right">{{ $issue->projectname }}</span>
                                 </div>
                             </a>
